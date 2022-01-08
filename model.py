@@ -179,7 +179,7 @@ def runServer(s):
 
 
 if __name__ == '__main__':
-    model = _create(name='best.pt', pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)  # pretrained
+    model = _create(name='best.pt', pretrained=True, channels=3, classes=80, autoshape=True, verbose=True, device='cpu')  # pretrained
 
     HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
     PORT = 1234  # Port to listen on (non-privileged ports are > 1023)
