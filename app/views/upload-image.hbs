@@ -24,6 +24,9 @@
 </form>
 
 <div>
+    {{#if notFile}}
+    <h2>You haven't selected a file yet</h2>
+    {{/if}}
     {{#if hasImage}}
     <h2>Your image:</h2>
     <br>

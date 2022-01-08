@@ -23,8 +23,11 @@
 </form>
 
 <div>
+     {{#if notFile}}
+    <h2>You haven't selected a file yet</h2>
+    {{/if}}
     {{#if justAdd}}
-    <h2>You have just uploaded a model!</h2>
+    <h2>You have just uploaded a model! Please restart the server</h2>
     {{/if}}
     {{#if hasModel}}
     <h2>You had a model!</h2>
