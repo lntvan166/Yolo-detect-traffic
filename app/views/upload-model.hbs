@@ -1,0 +1,33 @@
+<h2>Model Upload & Image Preview</h2>
+
+<!-- Upload  -->
+<form id="file-upload-form" class="uploader" method="post" action="/upload-model" enctype="multipart/form-data">
+    <input id="file-upload" type="file" name="data-model"/>
+
+    <label for="file-upload" id="file-drag">
+        <img id="file-model" src="#" alt="Preview" class="hidden">
+        <div id="start">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <div>Select a file or drag here</div>
+            <div id="notmodel" class="hidden">Please select a model and submit</div>
+            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+        </div>
+        <div id="response" class="hidden">
+            <div id="messages"></div>
+            <progress class="progress" id="file-progress" value="0">
+                <span>0</span>%
+            </progress>
+        </div>
+    </label>
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>
+
+<div>
+    {{#if hasModel}}
+    <h2>You uploaded your model!</h2>
+    {{/if}}
+    {{#if notSupport}}
+    <h2>Your file model is not supported!</h2>
+    {{/if}}
+</div>
+{{!-- <a href="{% url 'image_detection:index' %}">Go to home</a> --}}

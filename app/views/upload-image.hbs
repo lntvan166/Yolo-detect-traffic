@@ -1,0 +1,36 @@
+<h2>File Upload & Image Preview</h2>
+<p class="lead">Only PNG, JPG files</p>
+
+<!-- Upload  -->
+<form id="file-upload-form" class="uploader" method="post" action="/upload-image" enctype="multipart/form-data">
+    <input id="file-upload" type="file" name="data-image" accept="image/*" />
+
+    <label for="file-upload" id="file-drag">
+        <img id="file-image" src="#" alt="Preview" class="hidden">
+        <div id="start">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <div>Select a file or drag here</div>
+            <div id="notimage" class="hidden">Please select an image</div>
+            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+        </div>
+        <div id="response" class="hidden">
+            <div id="messages"></div>
+            <progress class="progress" id="file-progress" value="0">
+                <span>0</span>%
+            </progress>
+        </div>
+    </label>
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>
+
+<div>
+    {{#if hasImage}}
+    <h2>Your image:</h2>
+    <br>
+    <img src="/img/image.png" alt="Your image">
+    {{/if}}
+    {{#if notSupport}}
+    <h2>Your file image is not supported</h2>
+    {{/if}}
+</div>
+{{!-- <a href="{% url 'image_detection:index' %}">Go to home</a> --}}

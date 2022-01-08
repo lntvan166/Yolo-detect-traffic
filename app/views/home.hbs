@@ -1,0 +1,52 @@
+<div class="container">
+
+    <h1 align="center">YOLOv5</h1>
+    <p class="text-justify">Project about YOLOv5 detection</p>
+    {{#if imgExist}}
+    <div class="alert alert-success" role="alert">
+        An image is already predicted.
+    </div>
+    {{else}}
+    <div class="alert alert-warning" role="alert">
+        Your an image to predict can not be loaded. Please upload your an image!
+    </div>
+    {{/if}}
+    {{#if mdlExist}}
+    <div class="alert alert-success" role="alert">
+        The model is already to predict.
+    </div>
+    {{else}}
+    <div class="alert alert-warning" role="alert">
+        Your model can not be loaded. Please upload your model!
+    </div>
+    {{/if}}
+    {{!-- <div align="center">
+        <img src="img/image.png" class="img-fluid" alt="Responsive image">
+        <h4>
+            Image of a patient is predicted.
+        </h4>
+    </div> --}}
+    {{#if run}}
+    <form method="POST" action="/run-model">
+        <input id="run-model" type="submit" class="btn btn-primary" value="Run Model" />
+    </form>
+    {{/if}}
+    <div id="run-model-loading">
+        <h2>Running model... please wait!!</h2>
+        <div class="loading">
+            <div class="loader">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
