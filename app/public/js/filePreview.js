@@ -10,3 +10,12 @@ var loadFile = function(event) {
       URL.revokeObjectURL(output.src) // free memory
     }
 };
+
+
+// document.getElementById('upload-model-btn').onclick = (ev) => {
+//   ev.preventDefault()
+//   document.getElementById('select-file-label').innerHTML = 'Model submitted'
+//   document.getElementById('had-file').style.display = 'block'
+//   document.getElementById('file-upload-form').submit()
+//   this.form.submit()
+// }

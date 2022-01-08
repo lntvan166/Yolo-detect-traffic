@@ -8,7 +8,7 @@
         <img id="file-model" src="#" alt="Preview" class="hidden">
         <div id="start">
             <i class="fa fa-download" aria-hidden="true"></i>
-            <div>Select a file or drag here</div>
+            <div id="select-file-label">Select a file or drag here</div>
             <div id="notmodel" class="hidden">Please select a model and submit</div>
             <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
         </div>
@@ -19,12 +19,15 @@
             </progress>
         </div>
     </label>
-    <input type="submit" class="btn btn-primary" value="Submit" />
+    <input id="upload-model-btn" type="submit" class="btn btn-primary" value="Submit" />
 </form>
 
 <div>
+    {{#if justAdd}}
+    <h2>You have just uploaded a model!</h2>
+    {{/if}}
     {{#if hasModel}}
-    <h2>You uploaded your model!</h2>
+    <h2>You had a model!</h2>
     {{/if}}
     {{#if notSupport}}
     <h2>Your file model is not supported!</h2>

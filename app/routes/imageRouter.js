@@ -11,23 +11,25 @@ router.get("/upload-image", (req, res) => {
   });
 });
 
-router.post("/upload-image", upload_image.single("data-image"), (req, res) => {
+router.post("/upload-image", upload_image.single("data-image"), async (req, res) => {
   const extAccept = [".png", ".jpeg", ".jpg"];
   const extname = path.extname(req.file.originalname).toLowerCase();
 
   if (extAccept.includes(extname)) {
-		fs.unlinkSync(path.join(__dirname, "../public/model/image.png"));
-    fs.rename(
+    await fs.renameSync(
       path.join(__dirname, "../public/img/", req.file.originalname),
       path.join(__dirname, "../public/img/", "image.png"),
       (err) => {
-        if (err) throw err;
+        if (err)
+          throw err;
       }
     );
-    fs.unlinkSync(path.join(__dirname, "../../image.png"));
+    if (await fs.existsSync(path.join(__dirname, "../../image.png"))) {
+      await fs.unlinkSync(path.join(__dirname, "../../image.png"));
+    }
     const path_src = path.join(__dirname, "../public/img/image.png");
     const path_dst = path.join(__dirname, "../../image.png");
-    fs.copyFile(path_src, path_dst, (err) => {
+    await fs.copyFile(path_src, path_dst, (err) => {
       if (err) {
         console.log(err);
       }
@@ -38,7 +40,12 @@ router.post("/upload-image", upload_image.single("data-image"), (req, res) => {
       hasImage,
     });
   } else {
-    fs.unlinkSync(path.join(__dirname, "../../", req.file.originalname));
+    if (await fs.existsSync(path.join(__dirname, "../../image.png"))) {
+      await fs.unlinkSync(path.join(__dirname, "../../image.png"));
+    }
+    await fs.unlinkSync(path.join(__dirname, '../public/img/', req.file.originalname));
+
+
     const notSupport = true;
     return res.render("upload-image", {
       notSupport,
